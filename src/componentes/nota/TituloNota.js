@@ -1,13 +1,14 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 
-function TituloNota({texto}) {
+function TituloNota({texto,editarTituloHandler}) {
 
    //Funciones Formulario
    const {register, handleSubmit} = useForm();
    const { onChange, onBlur, name, ref } = register('titulo');
    const onSubmit = (data) => {
        console.log('onSubmit',data);
+       editarTituloHandler(data.titulo); 
    };
 
   if (texto === null)

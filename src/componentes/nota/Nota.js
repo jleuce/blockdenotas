@@ -21,10 +21,18 @@ function Nota(props) {
   const editarTexto = (nuevoTexto) => {
     setTexto(nuevoTexto);
   }
+  const guardar = () =>{
+    console.log('guardando',titulo,texto);
+    props.agregarNotaHandler({
+      idNota: (3),
+      tituloNota:titulo, 
+      textoNota:texto,
+    })
+  }
 
   return (
     <div className='nota'>
-      <BarraNota></BarraNota>
+      <BarraNota guardarHandler={guardar}></BarraNota>
       <TituloNota 
         texto={titulo}
         editarTituloHandler={editarTitulo}
