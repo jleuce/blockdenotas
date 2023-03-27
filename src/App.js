@@ -1,24 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import Nota from './componentes/nota/Nota';
+import NavBar from './componentes/NavBar';
+import PanelNotas from './componentes/PanelNotas'
+//import { BrowserRouter, Route, Routes } from 'react-router-dom'; falta desinstalar
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>HOLA MUNDO PRUEBA</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <NavBar/>
+      <div>
+        <PanelNotas/>
+      </div>
+    </>
   );
 }
 
