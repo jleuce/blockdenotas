@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BarraNota from './BarraNota';
 import TituloNota from './TituloNota';
 import TextoNota from './TextoNota';
@@ -6,35 +6,33 @@ import PieNota from './PieNota';
 //import { set, useForm, useFormState } from 'react-hook-form';
 
 function Nota(props) {
+ 
+  useEffect(() => {
+    setTitulo(props.tituloNota);
+    setTexto(props.textoNota);
+  }, [])
   
-  /*const {register, handleSubmit , reset, setValue} = useForm();
-  const onSubmit = (data) => {
-      console.log('onSubmit',data);
-  };
-  /*
-  //campos del formulario
-  const vehiculo = register('vehiculo',{required:true});
-  const titulo = register('titulo');
-  const fechaAsignado = register('fechaAsignado',{required:true});
+  const [titulo, setTitulo] = useState(null);
+  const [texto, setTexto] = useState(null);
 
-  titulo="Conductor"
-                                listado={estadoActualVehiculos.map(e=>e.conductor)}
-                                elegirTextoHandler={(t)=> setValue('conductor', t)} 
-                                texto={conductor.value}
-                                ref={conductor.ref}
-                                onchange={conductor.onChange}
-                                elegirTextoHandler={(t)=> setValue('titulo', t)} 
-        texto2={titulo.value}
-        ref={titulo.ref}
-        onchange={titulo.onChange}
-  */
+  const editarTitulo = (nuevoTexto) => {
+    setTitulo(nuevoTexto);
+  }
+  const editarTexto = (nuevoTexto) => {
+    setTexto(nuevoTexto);
+  }
+
   return (
     <div className='nota'>
       <BarraNota></BarraNota>
       <TituloNota 
-        texto={props.tituloNota}
+        texto={titulo}
+        editarTituloHandler={editarTitulo}
       ></TituloNota>
-      <TextoNota texto={props.textoNota}></TextoNota>
+      <TextoNota 
+        texto={texto}
+        editarTextoHandler={editarTexto}
+      ></TextoNota>
       <PieNota></PieNota>
     </div>
   )

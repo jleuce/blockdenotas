@@ -6,12 +6,17 @@ function PanelNotas() {
                                       {idNota: (2), tituloNota:'Titulo Prueba 2', textoNota:'Texto Prueba 2'}
                                     ]);
 
+  const agregarNota = (objetoAgregar) => {
+    setNotas([...notas,objetoAgregar]);
+  }
+
   return (
-    <div>
+    <div className='.panelNotas'>
       {notas.map( nota => <Nota
                             key = {nota.idNota}
                             tituloNota={nota.tituloNota} 
                             textoNota={nota.textoNota}
+                            agregarNotaHandler={agregarNota}
                           ></Nota>)}
     </div>
   )

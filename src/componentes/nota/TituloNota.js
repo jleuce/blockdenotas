@@ -1,6 +1,14 @@
 import React from 'react'
+import { useForm } from 'react-hook-form';
 
 function TituloNota({texto}) {
+
+   //Funciones Formulario
+   const {register, handleSubmit} = useForm();
+   const onSubmit = (data) => {
+       console.log('onSubmit',data);
+   };
+
   if (texto === null)
   {
     return (
@@ -9,7 +17,10 @@ function TituloNota({texto}) {
   }else{
     return (
       <div className='tituloNota'>
-        <input type='text' value={texto}/>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <input type='text' value={texto} name='algo' {...register('titulo',{required:true})}/>
+          <input type="submit" value="Enviar"/>
+        </form>
       </div>  
     )
   }
