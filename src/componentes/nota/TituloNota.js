@@ -5,6 +5,7 @@ function TituloNota({texto}) {
 
    //Funciones Formulario
    const {register, handleSubmit} = useForm();
+   const { onChange, onBlur, name, ref } = register('titulo');
    const onSubmit = (data) => {
        console.log('onSubmit',data);
    };
@@ -18,8 +19,13 @@ function TituloNota({texto}) {
     return (
       <div className='tituloNota'>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input type='text' value={texto} name='algo' {...register('titulo',{required:true})}/>
-          <input type="submit" value="Enviar"/>
+          <input type='text' 
+            defaultValue={texto} 
+            onChange={onChange} // assign onChange event 
+            onBlur={handleSubmit(onSubmit)} // assign onBlur event
+            name={name} // assign name prop
+            ref={ref} // assign ref prop
+          />
         </form>
       </div>  
     )
