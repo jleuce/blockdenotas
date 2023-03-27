@@ -3,8 +3,8 @@ import Nota from './nota/Nota';
 import NotaReducida from './NotaReducida';
 
 function PanelNotas() {
-  const [notas, setNotas] = useState([{idNota: (1), tituloNota:'Titulo Prueba', textoNota:'Texto Prueba'},
-                                      {idNota: (2), tituloNota:'Titulo Prueba 2', textoNota:'Texto Prueba 2'}
+  const [notas, setNotas] = useState([{idNota: (1), tituloNota:'Titulo Prueba', textoNota:'Texto Prueba',colorNota:'#030303'},
+                                      {idNota: (2), tituloNota:'Titulo Prueba 2', textoNota:'Texto Prueba 2',colorNota:'#030303'}
                                     ]);
 
   const agregarNota = (objetoAgregar) => {
@@ -24,7 +24,9 @@ function PanelNotas() {
                             key = {nota.idNota}
                             tituloNota={nota.tituloNota} 
                             textoNota={nota.textoNota}
+                            colorNota={nota.colorNota}
                             agregarNotaHandler={agregarNota}
+                            modo='vista'
                           ></NotaReducida>)}
     </div>
   )
