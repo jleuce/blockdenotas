@@ -9,20 +9,11 @@ function NotaReducida(props) {
     const [color,setColor] = useState('#0742ca');
     
     useEffect(() => {
-      setTitulo(props.tituloNota);
-      setTexto(props.textoNota);
-      setColor(props.colorNota);
+      setValue("titulo", props.tituloNota);
+      setValue("texto", props.textoNota);
+      setValue("color", props.colorNota);
     }, [])
       
-      const editarTitulo = (nuevoTexto) => {
-        setTitulo(nuevoTexto);
-      }
-      const editarTexto = (nuevoTexto) => {
-        setTexto(nuevoTexto);
-      }
-      const editarColor = (nuevoTexto) => {
-        setColor(nuevoTexto);
-      }
       const guardar = () =>{
         console.log('guardando',titulo,texto,color);
         props.agregarNotaHandler({
@@ -33,47 +24,47 @@ function NotaReducida(props) {
         })
       }
       //Funciones Formulario
-        const {register, handleSubmit, formState:{errors}} = useForm();
+        const {setValue, register, handleSubmit, formState:{errors}} = useForm();
         //const { onChange, onBlur, name, ref } = register('titulo');
         const titulo1 = register('titulo',{require:true,maxLength:10});
         const texto1 = register('texto',{require:true,maxLength:50});
         const color1 = register('color');
         const onSubmit = (data) => {
             console.log('onSubmit',data);
-            editarTitulo(data.titulo); 
-            editarTexto(data.texto); 
-            editarColor(data.color); 
+            setTitulo(data.titulo); 
+            setTexto(data.texto); 
+            setColor(data.color); 
         };
       if (props.modo !== 'vista'){
         return (
-          <div className='nota'>
-              <div className='barraNota'>
+          <div className='nota' style={{ backgroundColor: color }}>
+              <div className='barraNota'style={{ backgroundColor: color }}>
                   <button>Volver</button>
                   <button onClick={guardar}>Guardar</button>
                   <button>Eliminar</button>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='tituloNota'>
-                      <input type='text' 
-                          defaultValue={titulo} 
+                  <div className='tituloNota'style={{ backgroundColor: color }}>
+                      <input type='text'
+                          //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
-                          //onBlur={handleSubmit(onSubmit)} // assign onBlur event
+                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
                       />{errors.titulo?.type === 'maxLength'&&<p>Error</p>}
                   </div>
-                  <div className='textoNota'>
+                  <div className='textoNota'style={{ backgroundColor: color }}>
                       <input type='text' 
-                          defaultValue={texto} 
+                          //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={texto1.name} // assign name prop
                           ref={texto1.ref} // assign ref prop
                       />
                   </div> 
-                  <div className='pieNota'>
+                  <div className='pieNota'style={{ backgroundColor: color }}>
                       <input type='color'
-                          defaultValue={color} 
+                          //defaultValue={color} 
                           onChange={color1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={color1.name} // assign name prop
@@ -94,7 +85,7 @@ function NotaReducida(props) {
               <form onSubmit={handleSubmit(onSubmit)}>
                   <div className='tituloNota'>
                       <input type='text' 
-                          defaultValue={titulo} 
+                          //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} 
                           name={titulo1.name} // assign name prop
@@ -103,7 +94,7 @@ function NotaReducida(props) {
                   </div>
                   <div className='textoNota'>
                       <input type='text' 
-                          defaultValue={texto} 
+                          //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={texto1.name} // assign name prop
@@ -112,7 +103,7 @@ function NotaReducida(props) {
                   </div> 
                   <div className='pieNota'>
                       <input type='color'
-                          defaultValue={color} 
+                          //defaultValue={color} 
                           onChange={color1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={color1.name} // assign name prop
