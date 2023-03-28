@@ -1,17 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-//import { set, useForm, useFormState } from 'react-hook-form';
 
 function NotaReducida(props) {
 
     const [titulo, setTitulo] = useState(null);
     const [texto, setTexto] = useState(null);
-    const [color,setColor] = useState('#0742ca');
+    const [color,setColor] = useState(null);
     
     useEffect(() => {
-      setValue("titulo", props.tituloNota);
-      setValue("texto", props.textoNota);
-      setValue("color", props.colorNota);
+        if(props.modo==='vista'){
+            setValue("titulo", props.tituloNota);
+            setValue("texto", props.textoNota);
+            setValue("color", props.colorNota);
+            setColor(props.colorNota);
+        }else{
+            setValue("titulo", 'Escribi titulo...');
+            setValue("texto", 'Escribi texto');
+            setValue('color','#FBFBFC')
+        }
     }, [])
       
       const guardar = () =>{
@@ -29,18 +35,15 @@ function NotaReducida(props) {
       }
       //Funciones Formulario
         const {setValue, register, handleSubmit, formState:{errors}} = useForm();
-        //const { onChange, onBlur, name, ref } = register('titulo');
         const titulo1 = register('titulo',{require:true,maxLength:10});
         const texto1 = register('texto',{require:true,maxLength:50});
         const color1 = register('color');
+
         const onSubmit = (data) => {
             console.log('onSubmit',data);
             setTitulo(data.titulo); 
             setTexto(data.texto); 
             setColor(data.color);
-            //setValue("titulo", props.tituloNota);
-            //setValue("texto", props.textoNota);
-            //setValue("color", props.colorNota);
         };
       if (props.modo !== 'vista'){
         return (
@@ -83,13 +86,13 @@ function NotaReducida(props) {
         )
       }else{
         return (
-          <div className='nota'>
-              <div className='barraNota'>
+          <div className='nota' style={{ backgroundColor: color }}>
+              <div className='barraNota' style={{ backgroundColor: color }}>
                   <button>Editar</button>
                   <button>Eliminar</button>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='tituloNota'>
+                  <div className='tituloNota' style={{ backgroundColor: color }}>
                       <input type='text' 
                           //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
@@ -98,7 +101,7 @@ function NotaReducida(props) {
                           ref={titulo1.ref} // assign ref prop
                       />
                   </div>
-                  <div className='textoNota'>
+                  <div className='textoNota'style={{ backgroundColor: color }}>
                       <input type='text' 
                           //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
@@ -107,7 +110,7 @@ function NotaReducida(props) {
                           ref={texto1.ref} // assign ref prop
                       />
                   </div> 
-                  <div className='pieNota'>
+                  <div className='pieNota' style={{ backgroundColor: color }}>
                       <input type='color'
                           //defaultValue={color} 
                           onChange={color1.onChange} // assign onChange event 
