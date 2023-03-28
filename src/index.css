@@ -34,6 +34,10 @@ code {
   box-sizing: content-box;
 }
 
+.nota:hover{
+  border: 1px solid blue;
+}
+
 .barraNota{
   top:0;
   width: 300px;

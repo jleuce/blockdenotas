@@ -33,10 +33,10 @@ function NotaReducida(props) {
         })
       }
       //Funciones Formulario
-        const {register, handleSubmit} = useForm();
+        const {register, handleSubmit, formState:{errors}} = useForm();
         //const { onChange, onBlur, name, ref } = register('titulo');
-        const titulo1 = register('titulo');
-        const texto1 = register('texto');
+        const titulo1 = register('titulo',{require:true,maxLength:10});
+        const texto1 = register('texto',{require:true,maxLength:50});
         const color1 = register('color');
         const onSubmit = (data) => {
             console.log('onSubmit',data);
@@ -57,10 +57,10 @@ function NotaReducida(props) {
                       <input type='text' 
                           defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
+                          //onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
-                      />
+                      />{errors.titulo?.type === 'maxLength'&&<p>Error</p>}
                   </div>
                   <div className='textoNota'>
                       <input type='text' 
@@ -80,6 +80,7 @@ function NotaReducida(props) {
                           ref={color1.ref} // assign ref prop
                       />
                   </div>
+                  <input type='submit'></input>
               </form>
           </div>
         )
@@ -95,7 +96,7 @@ function NotaReducida(props) {
                       <input type='text' 
                           defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
+                          onBlur={handleSubmit(onSubmit)} 
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
                       />
