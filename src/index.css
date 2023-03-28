@@ -17,63 +17,53 @@ code {
   height:50px;
 }
 
-.panelNotas{
-  display: inline;
-  position: relative;
-}
 
 .nota {
-  width: 1500px;
-  height: 1500px;
-  display: inline;
-  position: relative;
-  border: 200px;
-  border: 0,5px solid #000000;
-  padding:200px;
-  margin: 1000px;
-  box-sizing: content-box;
+  width:300px;
+  height:250px;
+  border-radius: 20%;
+  margin:2%;
+  background-color: yellowgreen;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
 }
 
 .nota:hover{
-  border: 1px solid blue;
+  outline: 20px solid blue;
 }
 
 .barraNota{
-  top:0;
-  width: 300px;
-  height: 50px;
-  border: 2px;
-  background-color: orange;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  background-color: yellow;
+  height:50px;
 }
 .tituloNota{
-  width: 300px;
-  height: 50px;
   background-color: red;
-  font-style: italic;
-  font-weight: 100;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height:50px;
 }
 
 .textoNota{
-  width: 300px;
-  height: 50px;
   font-style: oblique;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height:100px;
 }
 
 .pieNota{
-  bottom:0;
-  width: 300px;
-  height: 50px;
   background-color: orangered;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top:250px;
+  height:50px;
+}
+
+input{
+  height:100%;
+  width:90%;
+  background-color: transparent;
+  font-size: larger;
+  border:none;
+}
+
+button{
+  height:100%;
+  margin-left: 5%;
+  background-color: transparent;
+  border: none;
 }
