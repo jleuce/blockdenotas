@@ -21,21 +21,26 @@ code {
 .nota {
   width:300px;
   height:250px;
-  border-radius: 20%;
+  border-radius: 10%;
   margin:2%;
   background-color: yellowgreen;
   display: inline-block;
   box-sizing: border-box;
   text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
 }
 
 .nota:hover{
-  outline: 20px solid blue;
+  /*outline: 20px solid blue;*/
+  box-shadow: 0 50px 150px rgba(0,0,0,0.3)
 }
+
 
 .barraNota{
   background-color: yellow;
   height:50px;
+  border-radius: 30%;
 }
 .tituloNota{
   background-color: red;
@@ -66,4 +71,8 @@ button{
   margin-left: 5%;
   background-color: transparent;
   border: none;
+}
+
+.inputError{
+  outline: 5px solid red;
 }

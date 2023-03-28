@@ -15,13 +15,17 @@ function NotaReducida(props) {
     }, [])
       
       const guardar = () =>{
-        console.log('guardando',titulo,texto,color);
-        props.agregarNotaHandler({
-          idNota: (3),
-          tituloNota:titulo, 
-          textoNota:texto,
-          colorNota:color,
-        })
+        if(Object.entries(errors).length === 0){
+            console.log('guardando',titulo,texto,color);
+            props.agregarNotaHandler({
+            idNota: (3),
+            tituloNota:titulo, 
+            textoNota:texto,
+            colorNota:color,
+            })
+        }else{
+            alert('hay un error rey, no podes guardar esa nota');
+        }
       }
       //Funciones Formulario
         const {setValue, register, handleSubmit, formState:{errors}} = useForm();
@@ -33,7 +37,10 @@ function NotaReducida(props) {
             console.log('onSubmit',data);
             setTitulo(data.titulo); 
             setTexto(data.texto); 
-            setColor(data.color); 
+            setColor(data.color);
+            //setValue("titulo", props.tituloNota);
+            //setValue("texto", props.textoNota);
+            //setValue("color", props.colorNota);
         };
       if (props.modo !== 'vista'){
         return (
@@ -45,13 +52,13 @@ function NotaReducida(props) {
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                   <div className='tituloNota'style={{ backgroundColor: color }}>
-                      <input type='text'
+                      <input type='text' className={errors.titulo?.type === 'maxLength'&&'inputError'}
                           //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
-                      />{errors.titulo?.type === 'maxLength'&&<p>Error</p>}
+                      />{errors.titulo?.type === 'maxLength'&&<p>Error mas de 5 caract</p>}
                   </div>
                   <div className='textoNota'style={{ backgroundColor: color }}>
                       <input type='text' 
@@ -71,7 +78,6 @@ function NotaReducida(props) {
                           ref={color1.ref} // assign ref prop
                       />
                   </div>
-                  <input type='submit'></input>
               </form>
           </div>
         )
