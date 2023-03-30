@@ -18,7 +18,8 @@ function NotaReducida(props) {
         }else{
             setValue("titulo", 'Escribi titulo...');
             setValue("texto", 'Escribi texto');
-            setValue('color','#FBFBFC')
+            setColor('#fff');
+            setValue('color','#FBFBFC');
         }
     }, [])
       
