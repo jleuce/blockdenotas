@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { colorTextoSegunContraste } from '../funciones/funciones';
 
 function NotaReducida(props) {
 
     const [titulo, setTitulo] = useState(null);
     const [texto, setTexto] = useState(null);
     const [color,setColor] = useState(null);
-    
+    const [colorTextoInput,setColorTextoInput] = useState('#000');
     useEffect(() => {
         if(props.modo==='vista'){
             setValue("titulo", props.tituloNota);
             setValue("texto", props.textoNota);
             setValue("color", props.colorNota);
             setColor(props.colorNota);
+            setColorTextoInput(colorTextoSegunContraste(props.colorNota));
         }else{
             setValue("titulo", 'Escribi titulo...');
             setValue("texto", 'Escribi texto');
@@ -44,6 +46,7 @@ function NotaReducida(props) {
             setTitulo(data.titulo); 
             setTexto(data.texto); 
             setColor(data.color);
+            setColorTextoInput(colorTextoSegunContraste(data.color));
         };
       if (props.modo !== 'vista'){
         return (
@@ -55,7 +58,7 @@ function NotaReducida(props) {
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                   <div className='tituloNota'style={{ backgroundColor: color }}>
-                      <input type='text' className={errors.titulo?.type === 'maxLength'&&'inputError'}
+                      <input type='text' style={{ color: colorTextoInput }}  className={errors.titulo?.type === 'maxLength'&&'inputError'}
                           //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
@@ -64,7 +67,7 @@ function NotaReducida(props) {
                       />{errors.titulo?.type === 'maxLength'&&<p>Error mas de 5 caract</p>}
                   </div>
                   <div className='textoNota'style={{ backgroundColor: color }}>
-                      <input type='text' 
+                      <input type='text' style={{ color: colorTextoInput }} 
                           //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
@@ -93,7 +96,7 @@ function NotaReducida(props) {
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                   <div className='tituloNota' style={{ backgroundColor: color }}>
-                      <input type='text' 
+                      <input type='text' style={{ color: colorTextoInput }} 
                           //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} 
@@ -102,7 +105,7 @@ function NotaReducida(props) {
                       />
                   </div>
                   <div className='textoNota'style={{ backgroundColor: color }}>
-                      <input type='text' 
+                      <input type='text' style={{ color: colorTextoInput }}
                           //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event

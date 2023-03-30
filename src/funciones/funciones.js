@@ -36,26 +36,8 @@ function getContrastColor(hexColor) {
     element.style.color = textColor;
   }  
   //
-  import { traerDatos } from '../context/FunctionsFireBase'
-  export  const traerDatos = (coleccion,setHook,setLoading,campoBusqueda,elementoBusqueda) => {
-    console.log(`ejecutando traer datos de ${coleccion}`);
-    setLoading(true);
-    const db = getFirestore();
-    const colRef = collection(db, coleccion);
-    let busqueda;
+  //import { traerDatos } from '../context/FunctionsFireBase'
 
-    if (campoBusqueda === undefined) {
-        busqueda = colRef;
-    }else{
-        busqueda = query(colRef,where(campoBusqueda,"==",elementoBusqueda))
-    }
-
-    getDocs(busqueda)
-        .then (res => {
-            const data = res.docs.map( e => ({id: e.id, ...e.data()}))
-            setHook(data);
-        })
-        .then(() => setLoading(false))
-        console.log(`Datos de ${coleccion} cargados al hook`);
-
+export const colorTextoSegunContraste = (colorContraste) =>{
+   return getContrastColor(colorContraste);
 }
