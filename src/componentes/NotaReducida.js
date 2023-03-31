@@ -16,8 +16,8 @@ function NotaReducida(props) {
             setColor(props.colorNota);
             setColorTextoInput(colorTextoSegunContraste(props.colorNota));
         }else{
-            setValue("titulo", 'Escribi titulo...');
-            setValue("texto", 'Escribi texto');
+            setValue("titulo", '');
+            setValue("texto", '');
             setColor('#fff');
             setValue('color','#FBFBFC');
         }
@@ -38,7 +38,7 @@ function NotaReducida(props) {
       }
       //Funciones Formulario
         const {setValue, register, handleSubmit, formState:{errors}} = useForm();
-        const titulo1 = register('titulo',{require:true,maxLength:10});
+        const titulo1 = register('titulo',{require:true,maxLength:20});
         const texto1 = register('texto',{require:true,maxLength:50});
         const color1 = register('color');
 
@@ -58,24 +58,24 @@ function NotaReducida(props) {
                   <button>Eliminar</button>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='tituloNota'style={{ backgroundColor: color }}>
+                  <h1 className='tituloNota'style={{ backgroundColor: color }}>
                       <input type='text' style={{ color: colorTextoInput }}  className={errors.titulo?.type === 'maxLength'&&'inputError'}
-                          //defaultValue={titulo} 
+                          placeholder='Titulo...'
                           onChange={titulo1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
                       />{errors.titulo?.type === 'maxLength'&&<p>Error mas de 5 caract</p>}
-                  </div>
-                  <div className='textoNota'style={{ backgroundColor: color }}>
+                  </h1>
+                  <p className='textoNota'style={{ backgroundColor: color }}>
                       <input type='text' style={{ color: colorTextoInput }} 
-                          //defaultValue={texto} 
+                          placeholder='Texto...' 
                           onChange={texto1.onChange} // assign onChange event 
                           onBlur={handleSubmit(onSubmit)} // assign onBlur event
                           name={texto1.name} // assign name prop
                           ref={texto1.ref} // assign ref prop
                       />
-                  </div> 
+                  </p> 
                   <div className='pieNota'style={{ backgroundColor: color }}>
                       <input type='color'
                           //defaultValue={color} 
@@ -96,7 +96,7 @@ function NotaReducida(props) {
                   <button>Eliminar</button>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
-                  <div className='tituloNota' style={{ backgroundColor: color }}>
+                  <h1 className='tituloNota' style={{ backgroundColor: color }}>
                       <input type='text' style={{ color: colorTextoInput }} 
                           //defaultValue={titulo} 
                           onChange={titulo1.onChange} // assign onChange event 
@@ -104,8 +104,8 @@ function NotaReducida(props) {
                           name={titulo1.name} // assign name prop
                           ref={titulo1.ref} // assign ref prop
                       />
-                  </div>
-                  <div className='textoNota'style={{ backgroundColor: color }}>
+                  </h1>
+                  <p className='textoNota'style={{ backgroundColor: color }}>
                       <input type='text' style={{ color: colorTextoInput }}
                           //defaultValue={texto} 
                           onChange={texto1.onChange} // assign onChange event 
@@ -113,7 +113,7 @@ function NotaReducida(props) {
                           name={texto1.name} // assign name prop
                           ref={texto1.ref} // assign ref prop
                       />
-                  </div> 
+                  </p> 
                   <div className='pieNota' style={{ backgroundColor: color }}>
                       <input type='color'
                           //defaultValue={color} 

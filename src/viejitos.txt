@@ -1,0 +1,13 @@
+.nota {
+  width:300px;
+  height:250px;
+  border-radius: 10%;
+  margin:2%;
+  /*background-color: yellowgreen;*/
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease-in-out;
+  opacity: 0.9;
+}
