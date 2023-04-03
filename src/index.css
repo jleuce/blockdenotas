@@ -91,3 +91,16 @@ button{
 .inputError{
   outline: 5px solid red;
 }
+
+.color-palette {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.color-item {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+}

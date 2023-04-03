@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { colorTextoSegunContraste } from '../funciones/funciones';
+import PaletaColores from './PaletaColores';
 
 function NotaReducida(props) {
 
@@ -36,17 +37,21 @@ function NotaReducida(props) {
             alert('hay un error rey, no podes guardar esa nota');
         }
       }
+      const elegirColorPaleta = (color) => {
+        setValue('colorPaleta',color);
+        console.log(colorPaleta1);
+      };
       //Funciones Formulario
         const {setValue, register, handleSubmit, formState:{errors}} = useForm();
         const titulo1 = register('titulo',{require:true,maxLength:20});
         const texto1 = register('texto',{require:true,maxLength:50});
-        const color1 = register('color');
+        const colorPaleta1 = register('colorPaleta');
 
         const onSubmit = (data) => {
             console.log('onSubmit',data);
             setTitulo(data.titulo); 
             setTexto(data.texto); 
-            setColor(data.color);
+            setColor(data.colorPaleta);
             setColorTextoInput(colorTextoSegunContraste(data.color));
         };
       if (props.modo !== 'vista'){
@@ -76,14 +81,16 @@ function NotaReducida(props) {
                           ref={texto1.ref} // assign ref prop
                       />
                   </p> 
-                  <div className='pieNota'style={{ backgroundColor: color }}>
-                      <input type='color'
-                          //defaultValue={color} 
-                          onChange={color1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
-                          name={color1.name} // assign name prop
-                          ref={color1.ref} // assign ref prop
-                      />
+                  <div>
+                    <PaletaColores
+                        name={colorPaleta1.name}
+                        ref={colorPaleta1.ref}
+                        elegirColorPaletaHandler={elegirColorPaleta}
+                        onSelect={
+                            handleSubmit(onSubmit)()
+                          }
+                        onChange={colorPaleta1.onChange}
+                    ></PaletaColores>
                   </div>
               </form>
           </div>
@@ -114,14 +121,16 @@ function NotaReducida(props) {
                           ref={texto1.ref} // assign ref prop
                       />
                   </p> 
-                  <div className='pieNota' style={{ backgroundColor: color }}>
-                      <input type='color'
-                          //defaultValue={color} 
-                          onChange={color1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
-                          name={color1.name} // assign name prop
-                          ref={color1.ref} // assign ref prop
-                      />
+                  <div>
+                    <PaletaColores
+                        name={colorPaleta1.name}
+                        ref={colorPaleta1.ref}
+                        elegirColorPaletaHandler={elegirColorPaleta}
+                        onSelect={
+                            handleSubmit(onSubmit)()
+                          }
+                        onChange={colorPaleta1.onChange}
+                    ></PaletaColores>
                   </div>
               </form>
           </div>
