@@ -1,16 +1,18 @@
 import './App.css';
-import Nota from './componentes/nota/Nota';
 import NavBar from './componentes/NavBar';
 import PanelNotas from './componentes/PanelNotas'
+import Contexto from './context/Contexto';
 //import { BrowserRouter, Route, Routes } from 'react-router-dom'; falta desinstalar
 
 function App() {
   return (
     <>
-      <NavBar/>
-      <div>
-        <PanelNotas/>
-      </div>
+      <Contexto>
+        <NavBar/>
+        <div>
+          <PanelNotas/>
+        </div>
+      </Contexto>
     </>
   );
 }

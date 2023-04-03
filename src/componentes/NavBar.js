@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { MyContext } from '../context/Contexto';
 
 function NavBar() {
+
+  const myContextObject = useContext(MyContext);
+
   return (
     <div className='NavBar'>
+      <button onClick={myContextObject.cambiarColorFondo}>CAMBIAR MODO</button>
       <button>Menu</button>
       <button>Logo</button>
       <button>Buscar</button>

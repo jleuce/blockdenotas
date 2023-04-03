@@ -1,39 +1,22 @@
-import React, { useState } from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import NotaReducida from './NotaReducida';
+import { MyContext } from '../context/Contexto';
 
 function PanelNotas() {
+
+  const myContextObject = useContext(MyContext);
   const [notas, setNotas] = useState([
     {idNota: (1), tituloNota:'12345',textoNota:'Texto Prueba',colorNota:'#adce09'},
     {idNota: (2), tituloNota:'54321',textoNota:'Texto Prueba 2',colorNota:"#554bd8"}
                                     ]);
-
- const [colorFondo, setColorFondo] = useState('white');  
- const [colorBoton, setColorBoton] = useState('blue');  
- const [estadoColorFondo, setEstadoColorFondo] = useState(false);  
-
+    
   const agregarNota = (objetoAgregar) => {
     setNotas([...notas,objetoAgregar]);
   }
-  const cambiarModo = ()=>{
-    if (estadoColorFondo===false){
-      //setColorFondo('#696969')
-      setColorFondo('black');
-      setEstadoColorFondo(true);
-    }else{
-      //setColorFondo('#000');
-      setColorFondo('white');
-      setEstadoColorFondo(false);
-    }
     
-    console.log('color fondo',colorFondo);
-    console.log('estado color',estadoColorFondo);
-  }
 
   return (
-    <div className='.panelNotas' style={{background:colorFondo}}>
-      <div>
-        <button onClick={cambiarModo} style={{background:'blue'}}>Cambiar modo</button>
-      </div>
+    <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
       <div style={{ textAlign: 'center' }}>
         <NotaReducida
           tituloNota='Nueva Nota'
