@@ -11,7 +11,16 @@ function PanelNotas() {
                                     ]);
     
   const agregarNota = (objetoAgregar) => {
+    console.log('agregarNota',objetoAgregar);
     setNotas([...notas,objetoAgregar]);
+    console.log('array',notas);
+  }
+  const borrarNota = (idObjetoBorrar) => {
+    console.log('borrarNota',idObjetoBorrar);
+    const notasTransaccional = notas.filter( nota => nota.id !== idObjetoBorrar);
+    console.log('notas trans',notasTransaccional);
+    console.log('notas original', notas);
+    //setNotas(notasTransaccional);
   }
     
   return (
@@ -22,6 +31,9 @@ function PanelNotas() {
           textoNota=''
           colorNota='#FAFAFA'
           agregarNotaHandler={agregarNota}
+          tipoFuncion='agregar'
+          funcionHandler={agregarNota}
+          textoBoton='Agregar Nota'
           ></NotaReducida>
       </div>
       <div style={{ textAlign: 'center' , backgroundColor:'black' }}>Tus notas</div>
@@ -31,7 +43,9 @@ function PanelNotas() {
                             textoNota={nota.textoNota}
                             colorNota={nota.colorNota}
                             agregarNotaHandler={agregarNota}
-                            modo='vista'
+                            tipoFuncion='eliminar'
+                            funcionHandler={borrarNota}
+                            textoBoton='Eliminar nota'
                           ></NotaReducida>)}
     </div>
   )

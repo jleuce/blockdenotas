@@ -7,7 +7,7 @@ import Desplegable from './Desplegable';
 function NotaReducida(props) {
 
     const [colorFondoNota,setColorFondoNota] = useState(null);
-    const [colorTextoInput,setColorTextoInput] = useState('#000');
+    const [colorTextoInput,setColorTextoInput] = useState('#FAFAFA');
     useEffect(() => {
             setValue("titulo", props.tituloNota);
             setValue("texto", props.textoNota);
@@ -22,18 +22,24 @@ function NotaReducida(props) {
         const texto1 = register('texto',{require:true,maxLength:50});
         const colorPaleta1 = register('colorPaleta',{require});
 
-        const guardar = () =>{
-          if(Object.entries(errors).length === 0){
-              console.log('guardando');
-              props.agregarNotaHandler({
-              idNota: (3),
-              tituloNota:getValues('titulo'), 
-              textoNota:getValues('texto'),
-              colorNota:getValues('colorPaleta'),
-              })
-              reset();
+        const ejecutarFuncion = () =>{
+          if (props.tipoFuncion ==='agregar'){
+            console.log('guardar y date.now',Date.now());
+            if(Object.entries(errors).length === 0){
+                console.log('guardando');
+                props.funcionHandler({
+                  idNota: getValues('colorPaleta')+ Date.now(),
+                  tituloNota:getValues('titulo'), 
+                  textoNota:getValues('texto'),
+                  colorNota:getValues('colorPaleta'),
+                })
+                reset();
+            }else{
+                alert('hay un error rey, no podes guardar esa nota');
+            }
           }else{
-              alert('hay un error rey, no podes guardar esa nota');
+            console.log('borrar');
+            props.funcionHandler(props.key);
           }
         }
 
@@ -52,9 +58,7 @@ function NotaReducida(props) {
         return (
           <div className='nota' style={{ backgroundColor: colorFondoNota }}>
               <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
-                  <button>Volver</button>
-                  <button onClick={guardar}>Guardar</button>
-                  <button>Eliminar</button>
+                  <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
               </div>
               <form onSubmit={handleSubmit(onSubmit)}>
                   <h1 className='tituloNota'style={{ backgroundColor: colorFondoNota }}>
