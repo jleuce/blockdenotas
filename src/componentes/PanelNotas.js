@@ -6,21 +6,21 @@ function PanelNotas() {
 
   const myContextObject = useContext(MyContext);
   const [notas, setNotas] = useState([
-    {idNota: (1), tituloNota:'12345',textoNota:'Texto Prueba',colorNota:'#adce09'},
-    {idNota: (2), tituloNota:'54321',textoNota:'Texto Prueba 2',colorNota:"#554bd8"}
+    {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#adce09'},
+    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:"#554bd8"}
                                     ]);
     
   const agregarNota = (objetoAgregar) => {
     setNotas([...notas,objetoAgregar]);
   }
     
-
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
       <div style={{ textAlign: 'center' }}>
         <NotaReducida
-          tituloNota='Nueva Nota'
-          textoNota='...'
+          tituloNota=''
+          textoNota=''
+          colorNota='#FAFAFA'
           agregarNotaHandler={agregarNota}
           ></NotaReducida>
       </div>
