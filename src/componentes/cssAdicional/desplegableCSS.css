@@ -1,0 +1,13 @@
+.dropdown__content {
+    height: 0;
+    overflow: hidden;
+    transition: height 0.3s ease-in-out;
+  }
+  
+  .dropdown__content p {
+    margin: 0;
+  }
+  
+  .dropdown__content--expanded {
+    height: auto;
+  }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { colorTextoSegunContraste } from '../funciones/funciones';
 import PaletaColores from './PaletaColores';
+import Desplegable from './Desplegable';
 
 function NotaReducida(props) {
 
@@ -13,46 +14,49 @@ function NotaReducida(props) {
         if(props.modo==='vista'){
             setValue("titulo", props.tituloNota);
             setValue("texto", props.textoNota);
-            setValue("color", props.colorNota);
             setColor(props.colorNota);
             setColorTextoInput(colorTextoSegunContraste(props.colorNota));
         }else{
             setValue("titulo", '');
             setValue("texto", '');
             setColor('#fff');
-            setValue('color','#FBFBFC');
+            setColorTextoInput(colorTextoSegunContraste('#FAFAFA'));
         }
     }, [])
       
-      const guardar = () =>{
-        if(Object.entries(errors).length === 0){
-            console.log('guardando',titulo,texto,color);
-            props.agregarNotaHandler({
-            idNota: (3),
-            tituloNota:titulo, 
-            textoNota:texto,
-            colorNota:color,
-            })
-        }else{
-            alert('hay un error rey, no podes guardar esa nota');
-        }
-      }
-      const elegirColorPaleta = (color) => {
-        setValue('colorPaleta',color);
-        console.log(colorPaleta1);
-      };
       //Funciones Formulario
-        const {setValue, register, handleSubmit, formState:{errors}} = useForm();
+        const {setValue, register, handleSubmit, formState:{errors},reset} = useForm();
         const titulo1 = register('titulo',{require:true,maxLength:20});
         const texto1 = register('texto',{require:true,maxLength:50});
-        const colorPaleta1 = register('colorPaleta');
+        const colorPaleta1 = register('colorPaleta',{require});
+
+        const guardar = () =>{
+          if(Object.entries(errors).length === 0){
+              console.log('guardando',titulo,texto,color);
+              props.agregarNotaHandler({
+              idNota: (3),
+              tituloNota:titulo, 
+              textoNota:texto,
+              colorNota:color,
+              })
+              reset();
+          }else{
+              alert('hay un error rey, no podes guardar esa nota');
+          }
+        }
+
+        const elegirColorPaleta = (color) => {
+          setValue('colorPaleta',color);
+          handleSubmit(onSubmit)();
+          console.log(colorPaleta1);
+        };
 
         const onSubmit = (data) => {
             console.log('onSubmit',data);
             setTitulo(data.titulo); 
             setTexto(data.texto); 
             setColor(data.colorPaleta);
-            setColorTextoInput(colorTextoSegunContraste(data.color));
+            setColorTextoInput(colorTextoSegunContraste(data.colorPaleta));
         };
       if (props.modo !== 'vista'){
         return (
@@ -80,17 +84,20 @@ function NotaReducida(props) {
                           name={texto1.name} // assign name prop
                           ref={texto1.ref} // assign ref prop
                       />
-                  </p> 
+                  </p>
                   <div>
-                    <PaletaColores
+                    <Desplegable><PaletaColores elegirColorPaletaHandler={elegirColorPaleta}/></Desplegable>
+                  </div> 
+                  <div>
+                    {/*<PaletaColores
                         name={colorPaleta1.name}
                         ref={colorPaleta1.ref}
                         elegirColorPaletaHandler={elegirColorPaleta}
                         onSelect={
-                            handleSubmit(onSubmit)()
+                            handleSubmit(onSubmit)
                           }
                         onChange={colorPaleta1.onChange}
-                    ></PaletaColores>
+                        ></PaletaColores>*/}
                   </div>
               </form>
           </div>
@@ -120,18 +127,22 @@ function NotaReducida(props) {
                           name={texto1.name} // assign name prop
                           ref={texto1.ref} // assign ref prop
                       />
-                  </p> 
+                  </p>
+                  <div>
+                    <Desplegable contenido={<PaletaColores/>}><PaletaColores/></Desplegable>
+                  </div>  
                   <div>
                     <PaletaColores
                         name={colorPaleta1.name}
                         ref={colorPaleta1.ref}
                         elegirColorPaletaHandler={elegirColorPaleta}
                         onSelect={
-                            handleSubmit(onSubmit)()
+                            handleSubmit(onSubmit)
                           }
                         onChange={colorPaleta1.onChange}
                     ></PaletaColores>
                   </div>
+                  
               </form>
           </div>
         )
