@@ -90,7 +90,7 @@ function NotaReducida(props) {
                         />
                     </p>
                     <div>
-                      <Desplegable><PaletaColores elegirColorPaletaHandler={elegirColorPaleta}/></Desplegable>
+                      <Desplegable><PaletaColores elegirColorPaletaHandler={elegirColorPaleta} colorFondoNota={colorFondoNota}/></Desplegable>
                     </div> 
                     <div>
                       <button onClick={cambiarEstadoShowColorPicker}>Mostrar color Picker</button>
