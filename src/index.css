@@ -31,6 +31,8 @@ code {
   font-family: "Roboto", sans-serif;
   display: inline-block;
   opacity: 0.9;
+  z-index: 2;
+  align-items: center;
 /*
   width:300px;
   height:250px;
@@ -105,3 +107,38 @@ button{
   cursor: pointer;
   border: 0.1px solid rgb(121, 121, 121);
 }
+
+/*COLOR PICKER*/
+.color-picker {
+  display: inline-block;
+}
+
+.color-picker-button {
+  background-color: #0074d9;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.color-picker-preview {
+  width: 500px;
+  height: 500px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.color-picker-popover {
+  /*position: absolute;*/
+  z-index: 1;
+  width: auto;
+  height: auto;
+  position:absolute;
+}
+/*COLOR PICKER*/
+
+
+
+
+

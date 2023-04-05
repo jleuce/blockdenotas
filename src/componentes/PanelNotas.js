@@ -17,8 +17,9 @@ function PanelNotas() {
   }
   const borrarNota = (idObjetoBorrar) => {
     console.log('borrarNota',idObjetoBorrar);
-    const notasTransaccional = notas.filter( nota => nota.id !== idObjetoBorrar);
+    const notasTransaccional = notas.filter( nota => nota.idNota !== idObjetoBorrar);
     console.log('notas trans',notasTransaccional);
+    setNotas(notasTransaccional);
     console.log('notas original', notas);
     //setNotas(notasTransaccional);
   }
@@ -39,6 +40,7 @@ function PanelNotas() {
       <div style={{ textAlign: 'center' , backgroundColor:'black' }}>Tus notas</div>
       {notas.map( nota => <NotaReducida
                             key = {nota.idNota}
+                            idNota ={nota.idNota}
                             tituloNota={nota.tituloNota} 
                             textoNota={nota.textoNota}
                             colorNota={nota.colorNota}
