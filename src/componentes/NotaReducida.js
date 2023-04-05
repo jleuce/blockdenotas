@@ -102,6 +102,9 @@ function NotaReducida(props) {
                     <PaletaColores elegirColorPaletaHandler={elegirColorPaleta}/>
                   </div>
                   )}
+                  <div>
+                    <input type='checkbox'></input>
+                  </div>
             </div>
             
           </>

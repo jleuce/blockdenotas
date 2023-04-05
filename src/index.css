@@ -137,7 +137,19 @@ button{
   position:absolute;
 }
 /*COLOR PICKER*/
-
+input[type="checkbox"]:checked::before {
+  content: "✓";
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: green;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-align: center; /* Alinear el contenido en el centro del círculo */
+  font-size: 12px; /* Tamaño de fuente */
+  color: white; /* Color de fuente */
+}
 
 
 
