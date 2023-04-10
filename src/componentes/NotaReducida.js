@@ -66,6 +66,7 @@ function NotaReducida(props) {
       //if (props.modo !== 'vista'){
         return (
           <>
+          <div className='nota-container'>
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
@@ -90,21 +91,16 @@ function NotaReducida(props) {
                         />
                     </p>
                     <div>
-                      <Desplegable><PaletaColores elegirColorPaletaHandler={elegirColorPaleta} colorFondoNota={colorFondoNota}/></Desplegable>
-                    </div> 
-                    <div>
                       <button onClick={cambiarEstadoShowColorPicker}>Mostrar color Picker</button>
                     </div>
                 </form>
+              </div>
                 {showColorPicker && (
-                  <div className="color-picker-popover" style={{backgroundColor: 'lightgray',borderRadius:'15px'}}>
-                    <div className="color-picker-cover" onClick={cambiarEstadoShowColorPicker}></div>
-                    <PaletaColores elegirColorPaletaHandler={elegirColorPaleta}/>
+                  <div className='color-palete-container' /*className="color-picker-popover"*/ /*style={{backgroundColor: 'lightgray',borderRadius:'15px'}}*/>
+                    <div /*className="color-picker-cover"*/ onClick={cambiarEstadoShowColorPicker}></div>
+                    <PaletaColores elegirColorPaletaHandler={elegirColorPaleta} colorFondoNota={colorFondoNota}/>
                   </div>
                   )}
-                  <div>
-                    <input type='checkbox'></input>
-                  </div>
             </div>
             
           </>

@@ -10,12 +10,12 @@ function Desplegable({children}) {
     };
 
     return (
-        <div className="dropdown">
-        <button className="dropdown__toggle" onClick={cambiarEstado}>
+        <div /*className="dropdown"*/>
+        <button /*className="dropdown__toggle"*/ onClick={cambiarEstado}>
           {estadoDesplegado ? "Cerrar" : "Abrir"} Dropdown
         </button>
         {estadoDesplegado && (
-          <div className="dropdown__content">
+          <div /*className="dropdown__content"*/>
             <div>{children}</div>
           </div>
         )}

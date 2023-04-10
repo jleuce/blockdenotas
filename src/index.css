@@ -33,19 +33,6 @@ code {
   opacity: 0.9;
   z-index: 2;
   align-items: center;
-/*
-  width:300px;
-  height:250px;
-  border-radius: 10%;
-  margin:2%;
-  /*background-color: yellowgreen;
-  
-  box-sizing: border-box;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-  transition: box-shadow 0.3s ease-in-out;
-  
-  */
 }
 
 .nota:hover{
@@ -54,51 +41,45 @@ code {
 }
 
 
-.barraNota{
-  /*background-color: yellow;*/
-  height:50px;
-  border-radius: 30%;
-}
 .tituloNota{
  /*background-color: red;*/
   height:50px;
 }
-
 .textoNota{
   font-style: oblique;
   height:100px;
 }
-
 .pieNota{
  /* background-color: orangered;*/
   top:250px;
   height:50px;
 }
-
-input{
+.nota input{
   height:100%;
   width:90%;
   background-color: transparent;
   font-size: larger;
   border:none;
 }
-
-button{
+.nota button{
   height:100%;
   margin-left: 5%;
   background-color: transparent;
   border: none;
 }
-
-.inputError{
+.nota .inputError{
   outline: 5px solid red;
 }
-
+/*Componente paleta*/
 .color-palette {
   display: flex;
   flex-wrap: wrap;
+  height: auto;
+  width: auto;
+  background-color: gray;
+  border-radius: 20px;
+  position: absolute;
 }
-
 .color-item {
   width: 40px;
   height: 40px;
@@ -107,7 +88,7 @@ button{
   cursor: pointer;
   border: 0.1px solid rgb(121, 121, 121);
 }
-
+/*Pruebas*/
 .color-item:checked::after {
   content: "\2022"; /* Agregar un punto dentro del círculo */
   display: inline-block;
@@ -121,8 +102,7 @@ button{
   font-size: 12px; /* Tamaño de fuente */
   color: white; /* Color de fuente */
 }
-
-.color-itemSelected {
+.color-item::selection::after {
   content: "✓";
   display: inline-block;
   width: 14px;
@@ -140,7 +120,6 @@ button{
 .color-picker {
   display: inline-block;
 }
-
 .color-picker-button {
   background-color: #0074d9;
   color: #fff;
@@ -149,16 +128,13 @@ button{
   border-radius: 4px;
   cursor: pointer;
 }
-
 .color-picker-preview {
   width: 500px;
   height: 500px;
   margin-top: 10px;
   border-radius: 4px;
 }
-
 .color-picker-popover {
-  /*position: absolute;*/
   z-index: 1;
   width: auto;
   height: auto;
@@ -166,7 +142,7 @@ button{
 }
 /*COLOR PICKER*/
 
-input[type="checkbox"]:checked::before {
+.nota input[type="checkbox"]:checked::after {
   content: "✓";
   display: inline-block;
   width: 14px;
@@ -180,7 +156,41 @@ input[type="checkbox"]:checked::before {
   color: white; /* Color de fuente */
 }
 
+.color-itemSelected {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: 2px solid rgb(121, 0, 89);;
+}
+.color-itemSelected::before {
+  position: relative;
+  float:right;
+  content: "✓";
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: rgb(121, 0, 89);
+  margin-right: 0px;
+  vertical-align: top;
+  text-align: center; /* Alinear el contenido en el centro del círculo */
+  font-size: 12px; /* Tamaño de fuente */
+  color: white; /* Color de fuente */
+}
 
+/*Desplegable*/
+
+.dropdown{
+  outline: red 20px;
+}
+
+/*.color-palete-container{
+}*/
+
+.nota-container{
+  align-content: center;
+}
 
 
 

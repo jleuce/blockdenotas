@@ -9,20 +9,15 @@ export default function PaletaColores(props) {
     }
   return (
     <div className="color-palette">
-      {listaColores.map(itemColor => props.colorFondoNota !== itemColor ?
-      <div key={itemColor} 
-        /*className={props.colorFondoNota !== itemColor ? "color-item":"color-itemSelected"}*/
-        className="color-item"
-        onClick={() => handleClick(itemColor)} 
-        style={{ backgroundColor: itemColor }}
-      ></div>:<>
-      <input type='checkbox'
-        key={itemColor} 
-        /*className={props.colorFondoNota !== itemColor ? "color-item":"color-itemSelected"}*/
-        className="color-item"
-        onClick={() => handleClick(itemColor)} 
-        style={{ backgroundColor: itemColor }}
-      ></input></>)}
+      {listaColores.map(itemColor =>
+      <div>
+        <div key={itemColor} 
+          className={props.colorFondoNota !== itemColor ? "color-item":"color-itemSelected"}
+          /*className="color-item"*/
+          onClick={() => handleClick(itemColor)} 
+          style={{ backgroundColor: itemColor }}
+        ></div>
+      </div>)}
       
     </div>
   )
