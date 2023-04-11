@@ -1,9 +1,11 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { MyContext } from '../context/Contexto';
 
-function NavBar() {
+function NavBar(props) {
 
   const myContextObject = useContext(MyContext);
+
+  console.log('props del navBar', props);
 
   return (
     <div className='NavBar'>
@@ -14,8 +16,8 @@ function NavBar() {
       <button>Actualizar</button>
       <button>Cambio de vista</button>
       <button>Ajustes</button>
-      <button>Mas apps</button>
-      <button>Usuario</button>
+      <h1>{props.usuario.nombre}</h1>
+      <img src={props.usuario.img}></img>
     </div>
   )
 }

@@ -8,17 +8,13 @@ function NotaReducida(props) {
 
     const [colorFondoNota,setColorFondoNota] = useState('#FAFAFA');
     const [showColorPicker,setShowColorPicker] = useState(false);
-    //const [colorTextoInput,setColorTextoInput] = useState('#FAFAFA');
     const colorTextoInputMemo = useMemo(() => colorTextoSegunContraste(colorFondoNota), [colorFondoNota]);
 
     useEffect(() => {
-            //console.log('colorFondo',colorFondoNota);
-            //console.log('colorMemo',colorTextoInputMemo);
             setValue("titulo", props.tituloNota);
             setValue("texto", props.textoNota);
             setValue('colorPaleta',props.colorNota);
             setColorFondoNota(props.colorNota);
-            //setColorTextoInput(colorTextoSegunContraste(props.colorNota));
     }, [])
       
       //Funciones Formulario
@@ -43,6 +39,8 @@ function NotaReducida(props) {
                   colorNota:getValues('colorPaleta'),
                 })
                 reset();
+                setColorFondoNota('#FAFAFA');
+                setValue('colorPaleta','#FAFAFA');
             }else{
                 alert('hay un error rey, no podes guardar esa nota');
             }
@@ -61,7 +59,6 @@ function NotaReducida(props) {
         const onSubmit = (data) => {
             console.log('onSubmit',data);
             setColorFondoNota(data.colorPaleta);
-            //setColorTextoInput(colorTextoSegunContraste(data.colorPaleta));
         };
 
         return (

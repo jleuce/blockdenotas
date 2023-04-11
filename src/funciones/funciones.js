@@ -35,9 +35,7 @@ function getContrastColor(hexColor) {
     // Establecer el color de texto del elemento
     element.style.color = textColor;
   }  
-  //
-  //import { traerDatos } from '../context/FunctionsFireBase'
 
-export const colorTextoSegunContraste = (colorContraste) =>{
+export const colorTextoSegunContraste = (colorContraste) => {
    return getContrastColor(colorContraste);
 }
