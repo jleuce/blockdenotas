@@ -8,16 +8,17 @@ export default function PaletaColores(props) {
       props.elegirColorPaletaHandler(color);
     }
   return (
+      <div>
     <div className="color-palette">
       {listaColores.map(itemColor =>
       <div>
         <div key={itemColor} 
           className={props.colorFondoNota !== itemColor ? "color-item":"color-itemSelected"}
-          /*className="color-item"*/
           onClick={() => handleClick(itemColor)} 
           style={{ backgroundColor: itemColor }}
         ></div>
       </div>)}
+      </div>
       
     </div>
   )

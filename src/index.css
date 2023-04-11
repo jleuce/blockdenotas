@@ -17,7 +17,6 @@ code {
   height:50px;
 }
 
-
 .nota {
   background-color: #fff;
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
@@ -30,19 +29,14 @@ code {
   color: #333;
   font-family: "Roboto", sans-serif;
   display: inline-block;
-  opacity: 0.9;
-  z-index: 2;
+  /*opacity: 0.9;*/
   align-items: center;
+  position: relative;
 }
-
 .nota:hover{
-  /*outline: 20px solid blue;*/
   box-shadow: 0 50px 150px rgba(0,0,0,0.3)
 }
-
-
 .tituloNota{
- /*background-color: red;*/
   height:50px;
 }
 .textoNota{
@@ -50,7 +44,6 @@ code {
   height:100px;
 }
 .pieNota{
- /* background-color: orangered;*/
   top:250px;
   height:50px;
 }
@@ -67,19 +60,33 @@ code {
   background-color: transparent;
   border: none;
 }
+.nota button:hover{
+  border-radius: 15px;
+  opacity: 0.5;
+}
 .nota .inputError{
   outline: 5px solid red;
 }
 /*Componente paleta*/
+
+/*.color-palete-container{
+  position: relative;
+  height: 50px;
+}*/
 .color-palette {
-  display: flex;
-  flex-wrap: wrap;
+  z-index: 1;
+  display: inline-flex;
+  flex-wrap: nowrap;
   height: auto;
   width: auto;
   background-color: gray;
   border-radius: 20px;
-  position: absolute;
+  position: absolute; /* Establecer la posición absoluta para el elemento hijo */
+  top: 90%; /* Mover el elemento hijo hacia abajo el 50% de la altura del elemento padre */
+  left: 50%; /* Centrar horizontalmente el elemento hijo */
+  transform: translate(-50%, 50%); /* Centrar el elemento hijo exactamente en el centro */
 }
+
 .color-item {
   width: 40px;
   height: 40px;
@@ -87,73 +94,6 @@ code {
   border-radius: 50%;
   cursor: pointer;
   border: 0.1px solid rgb(121, 121, 121);
-}
-/*Pruebas*/
-.color-item:checked::after {
-  content: "\2022"; /* Agregar un punto dentro del círculo */
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: gray;
-  margin-right: 5px;
-  vertical-align: middle;
-  text-align: center; /* Alinear el contenido en el centro del círculo */
-  font-size: 12px; /* Tamaño de fuente */
-  color: white; /* Color de fuente */
-}
-.color-item::selection::after {
-  content: "✓";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: green;
-  margin-right: 5px;
-  vertical-align: middle;
-  text-align: center; /* Alinear el contenido en el centro del círculo */
-  font-size: 12px; /* Tamaño de fuente */
-  color: white; /* Color de fuente */
-}
-
-/*COLOR PICKER*/
-.color-picker {
-  display: inline-block;
-}
-.color-picker-button {
-  background-color: #0074d9;
-  color: #fff;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.color-picker-preview {
-  width: 500px;
-  height: 500px;
-  margin-top: 10px;
-  border-radius: 4px;
-}
-.color-picker-popover {
-  z-index: 1;
-  width: auto;
-  height: auto;
-  position:absolute;
-}
-/*COLOR PICKER*/
-
-.nota input[type="checkbox"]:checked::after {
-  content: "✓";
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background-color: green;
-  margin-right: 5px;
-  vertical-align: middle;
-  text-align: center; /* Alinear el contenido en el centro del círculo */
-  font-size: 12px; /* Tamaño de fuente */
-  color: white; /* Color de fuente */
 }
 
 .color-itemSelected {
@@ -164,6 +104,7 @@ code {
   cursor: pointer;
   outline: 2px solid rgb(121, 0, 89);;
 }
+
 .color-itemSelected::before {
   position: relative;
   float:right;
@@ -179,18 +120,7 @@ code {
   color: white; /* Color de fuente */
 }
 
-/*Desplegable*/
 
-.dropdown{
-  outline: red 20px;
-}
-
-/*.color-palete-container{
-}*/
-
-.nota-container{
-  align-content: center;
-}
 
 
 

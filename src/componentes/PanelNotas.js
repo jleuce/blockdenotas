@@ -37,7 +37,7 @@ function PanelNotas() {
           textoBoton='Agregar Nota'
           ></NotaReducida>
       </div>
-      <div style={{ textAlign: 'center' , backgroundColor:'black' }}>Tus notas</div>
+      <div style={{ textAlign: 'center' }}>Tus notas</div>
       {notas.map( nota => <NotaReducida
                             key = {nota.idNota}
                             idNota ={nota.idNota}

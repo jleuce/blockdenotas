@@ -63,10 +63,9 @@ function NotaReducida(props) {
             setColorFondoNota(data.colorPaleta);
             //setColorTextoInput(colorTextoSegunContraste(data.colorPaleta));
         };
-      //if (props.modo !== 'vista'){
+
         return (
           <>
-          <div className='nota-container'>
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
@@ -94,51 +93,15 @@ function NotaReducida(props) {
                       <button onClick={cambiarEstadoShowColorPicker}>Mostrar color Picker</button>
                     </div>
                 </form>
-              </div>
                 {showColorPicker && (
-                  <div className='color-palete-container' /*className="color-picker-popover"*/ /*style={{backgroundColor: 'lightgray',borderRadius:'15px'}}*/>
-                    <div /*className="color-picker-cover"*/ onClick={cambiarEstadoShowColorPicker}></div>
+                  <div className='color-palete-container'>
+                    <div onClick={cambiarEstadoShowColorPicker}></div>
                     <PaletaColores elegirColorPaletaHandler={elegirColorPaleta} colorFondoNota={colorFondoNota}/>
                   </div>
-                  )}
-            </div>
-            
+                  )} 
+              </div>
           </>
         )
-      /*}else{
-        return (
-          <div className='nota' style={{ backgroundColor: colorFondoNota }}>
-              <div className='barraNota' style={{ backgroundColor: colorFondoNota }}>
-                  <button>Editar</button>
-                  <button>Eliminar</button>
-              </div>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                  <h1 className='tituloNota' style={{ backgroundColor: colorFondoNota }}>
-                      <input type='text' style={{ color: colorTextoInput }} 
-                          //defaultValue={titulo} 
-                          onChange={titulo1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} 
-                          name={titulo1.name} // assign name prop
-                          ref={titulo1.ref} // assign ref prop
-                      />
-                  </h1>
-                  <p className='textoNota'style={{ backgroundColor: colorFondoNota }}>
-                      <input type='text' style={{ color: colorTextoInput }}
-                          //defaultValue={texto} 
-                          onChange={texto1.onChange} // assign onChange event 
-                          onBlur={handleSubmit(onSubmit)} // assign onBlur event
-                          name={texto1.name} // assign name prop
-                          ref={texto1.ref} // assign ref prop
-                      />
-                  </p>
-                 <div>
-                    <Desplegable><PaletaColores elegirColorPaletaHandler={elegirColorPaleta}/></Desplegable>
-                  </div> 
-                  
-              </form>
-          </div>
-        )
-      }*/
 }
 
 export default NotaReducida
