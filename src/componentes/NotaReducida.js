@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { colorTextoSegunContraste } from '../funciones/funciones';
 import PaletaColores from './PaletaColores';
-import Desplegable from './Desplegable';
 
 function NotaReducida(props) {
 
