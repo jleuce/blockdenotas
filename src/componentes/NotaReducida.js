@@ -85,8 +85,8 @@ function NotaReducida(props) {
                             ref={texto1.ref} // assign ref prop
                         />
                     </p>
-                    <div>
-                      <button onClick={cambiarEstadoShowColorPicker}>Mostrar color Picker</button>
+                    <div className='botonApoyable'>
+                      <button onClick={cambiarEstadoShowColorPicker} >Mostrar color Picker</button>
                     </div>
                 </form>
                 {showColorPicker && (

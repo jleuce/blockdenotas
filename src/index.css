@@ -163,6 +163,13 @@ code {
   color: #333;
 }
 
+.botonApoyable{
+  opacity: 0;
+}
+.botonApoyable:hover{
+  opacity: 1;
+}
+
 
 
 
