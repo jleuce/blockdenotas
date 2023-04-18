@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { colorTextoSegunContraste } from '../funciones/funciones';
 import PaletaColores from './PaletaColores';
+import ModalNota from '../context/ModalNota'
 
 function NotaReducida(props) {
 
@@ -60,8 +61,24 @@ function NotaReducida(props) {
             setColorFondoNota(data.colorPaleta);
         };
 
+        const [isOpen, setIsOpen] = useState(false);
+        const [modalContent, setModalContent] = useState('');
+
+        const openModal = () => {
+          setIsOpen(true);
+          setModalContent('¡Hola desde el modal!');
+        }
+
+        const closeModal = () => {
+          setIsOpen(false);
+        }
+
         return (
           <>
+            <div>
+              <button onClick={openModal}>Abrir modal</button>
+              {isOpen && <ModalNota closeModal={closeModal} modalContent={modalContent} />}
+            </div>
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
