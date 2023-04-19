@@ -17,6 +17,7 @@ const ModalNota= (props) => {
                             guardarNotaHandler={props.guardarNotaHandler}
                             editarNotaHandler={props.editarNotaHandler}
                             textoBoton={props.textoBoton}
+                            tipo='edicion'
           ></NotaReducida>
         </div>
       </div>

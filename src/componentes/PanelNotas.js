@@ -34,6 +34,8 @@ function PanelNotas() {
     
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
+                  <div><iframe src="https://dolarhoy.com/i/cotizaciones/dolar-blue" frameborder="0"></iframe></div>
+          
       <div style={{ textAlign: 'center' }}>
         <NotaReducida
           tituloNota=''
@@ -41,6 +43,7 @@ function PanelNotas() {
           colorNota='#FAFAFA'
           guardarNotaHandler={(nuevaNota) => agregarNota(nuevaNota)}
           textoBoton='Agregar Nota'
+          tipo='nueva'
           ></NotaReducida>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>

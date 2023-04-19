@@ -5,6 +5,8 @@ import PaletaColores from './PaletaColores';
 
 function NotaReducida(props) {
 
+    console.log(props);
+
     const [colorFondoNota,setColorFondoNota] = useState('#FAFAFA');
     const [showColorPicker,setShowColorPicker] = useState(false);
     const colorTextoInputMemo = useMemo(() => colorTextoSegunContraste(colorFondoNota), [colorFondoNota]);
@@ -43,6 +45,9 @@ function NotaReducida(props) {
                 alert('hay un error rey, no podes guardar esa nota');
             }
         }
+        const editarNota = (objeto) =>{
+          props.editarNotaHandler(objeto);
+        }
 
         const elegirColorPaleta = (color) => {
           setValue('colorPaleta',color);
@@ -69,6 +74,7 @@ function NotaReducida(props) {
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
+                    {props.tipo =='edicion'?<button>Editar</button>:''}
                 </div>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <h1 className='tituloNota'style={{ backgroundColor: colorFondoNota }}>
