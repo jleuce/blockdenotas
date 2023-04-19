@@ -2,7 +2,6 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { colorTextoSegunContraste } from '../funciones/funciones';
 import PaletaColores from './PaletaColores';
-import ModalNota from '../context/ModalNota'
 
 function NotaReducida(props) {
 
@@ -28,15 +27,14 @@ function NotaReducida(props) {
           setShowColorPicker((prev) => !prev);
         }
         const ejecutarFuncion = () =>{
-          if (props.tipoFuncion ==='agregar'){
-            console.log('guardar y date.now',Date.now());
             if(Object.entries(errors).length === 0){
                 console.log('guardando');
-                props.funcionHandler({
+                props.guardarNotaHandler({
                   idNota: getValues('colorPaleta')+ Date.now(),
                   tituloNota:getValues('titulo'), 
                   textoNota:getValues('texto'),
                   colorNota:getValues('colorPaleta'),
+                  fechaEdicion:Date.now(),
                 })
                 reset();
                 setColorFondoNota('#FAFAFA');
@@ -44,10 +42,6 @@ function NotaReducida(props) {
             }else{
                 alert('hay un error rey, no podes guardar esa nota');
             }
-          }else{
-            console.log('borrar');
-            props.funcionHandler(props.idNota);
-          }
         }
 
         const elegirColorPaleta = (color) => {
@@ -59,26 +53,19 @@ function NotaReducida(props) {
         const onSubmit = (data) => {
             console.log('onSubmit',data);
             setColorFondoNota(data.colorPaleta);
+            if(props.tipoNota === 'existente'){
+              props.editarNotaHandler({
+                idNota: props.idNota,
+                tituloNota:getValues('titulo'), 
+                textoNota:getValues('texto'),
+                colorNota:getValues('colorPaleta'),
+                fechaEdicion:Date.now(),
+              });
+            }
         };
-
-        const [isOpen, setIsOpen] = useState(false);
-        const [modalContent, setModalContent] = useState('');
-
-        const openModal = () => {
-          setIsOpen(true);
-          setModalContent('¡Hola desde el modal!');
-        }
-
-        const closeModal = () => {
-          setIsOpen(false);
-        }
 
         return (
           <>
-            <div>
-              <button onClick={openModal}>Abrir modal</button>
-              {isOpen && <ModalNota closeModal={closeModal} modalContent={modalContent} />}
-            </div>
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>
