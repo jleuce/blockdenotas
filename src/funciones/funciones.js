@@ -39,3 +39,25 @@ function getContrastColor(hexColor) {
 export const colorTextoSegunContraste = (colorContraste) => {
    return getContrastColor(colorContraste);
 }
+
+function adelantarNotasFijas(arrayNotas) {
+  const arrayTransaccional1 = arrayNotas.filter(notaFijada => notaFijada.fijada === true);
+  const arrayTransaccional2 = arrayNotas.filter(notaFijada => notaFijada.fijada !== true);
+  return arrayTransaccional1.concat(arrayTransaccional2);
+}
+
+function ordenarNumericamenteUnArray(arrayNotas){
+  arrayNotas.sort(function (a, b) {
+    if (a.posicion > b.posicion) {
+      return 1;
+    }
+    if (a.posicion < b.posicion) {
+      return -1;
+    }
+    // a must be equal to b
+    return 0;
+  });
+}
+export const ordenarNotas = (arrayNotas) => {
+  return adelantarNotasFijas(ordenarNumericamenteUnArray(arrayNotas));
+}

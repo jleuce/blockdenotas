@@ -2,14 +2,17 @@ import React, { useContext, useState } from 'react'
 import NotaReducida from './NotaReducida';
 import NotaVisual from './NotaVisual'
 import { MyContext } from '../context/Contexto';
+import { ordenarNotas } from '../funciones/funciones';
 
 function PanelNotas() {
 
   const myContextObject = useContext(MyContext);
   const [notas, setNotas] = useState([
-    {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#90BE6D'},
-    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#43AA8B'}
+    {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#90BE6D',fijada:false,posicion:(5)},
+    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#43AA8B',fijada:true,posicion:(6)},
+    {idNota: (3), tituloNota:'Prueba 3',textoNota:'Texto Prueba 3',colorNota:'#43AA8B',fijada:false,posicion:(2)}
                                     ]);
+  const notasOrdenadas = useMemo(() => ordenarNotas(notas), [notas]);
     
   const agregarNota = (objetoAgregar) => {
     console.log('agregarNota',objetoAgregar);
@@ -47,7 +50,7 @@ function PanelNotas() {
           ></NotaReducida>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>
-      {notas.map( nota => <NotaVisual
+      {notasOrdenadas.map( nota => <NotaVisual
                             key = {nota.idNota}
                             idNota ={nota.idNota}
                             tituloNota={nota.tituloNota} 
