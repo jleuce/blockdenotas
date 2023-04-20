@@ -29,6 +29,7 @@ function NotaReducida(props) {
           setShowColorPicker((prev) => !prev);
         }
         const ejecutarFuncion = () =>{
+          console.log('cant',props.cantidadNotas);
             if(Object.entries(errors).length === 0){
                 console.log('guardando');
                 props.guardarNotaHandler({
@@ -37,6 +38,7 @@ function NotaReducida(props) {
                   textoNota:getValues('texto'),
                   colorNota:getValues('colorPaleta'),
                   fechaEdicion:Date.now(),
+                  posicion:props.cantidadNotas + (1),
                 })
                 reset();
                 setColorFondoNota('#FAFAFA');

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useMemo, useState } from 'react'
 import NotaReducida from './NotaReducida';
 import NotaVisual from './NotaVisual'
 import { MyContext } from '../context/Contexto';
@@ -47,6 +47,7 @@ function PanelNotas() {
           guardarNotaHandler={(nuevaNota) => agregarNota(nuevaNota)}
           textoBoton='Agregar Nota'
           tipo='nueva'
+          cantidadNotas={notasOrdenadas.length}
           ></NotaReducida>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>

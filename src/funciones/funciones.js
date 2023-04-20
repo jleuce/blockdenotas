@@ -57,6 +57,7 @@ function ordenarNumericamenteUnArray(arrayNotas){
     // a must be equal to b
     return 0;
   });
+  return arrayNotas;
 }
 export const ordenarNotas = (arrayNotas) => {
   return adelantarNotasFijas(ordenarNumericamenteUnArray(arrayNotas));
