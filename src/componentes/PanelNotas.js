@@ -8,9 +8,9 @@ function PanelNotas() {
 
   const myContextObject = useContext(MyContext);
   const [notas, setNotas] = useState([
-    {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#90BE6D',fijada:false,posicion:(5)},
-    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#43AA8B',fijada:true,posicion:(6)},
-    {idNota: (3), tituloNota:'Prueba 3',textoNota:'Texto Prueba 3',colorNota:'#43AA8B',fijada:false,posicion:(2)}
+    {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#55efc4',fijada:false,posicion:(1)},
+    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#81ecec',fijada:true,posicion:(2)},
+    {idNota: (3), tituloNota:'Prueba 3',textoNota:'Texto Prueba 3',colorNota:'#74b9ff',fijada:false,posicion:(3)}
                                     ]);
   const notasOrdenadas = useMemo(() => ordenarNotas(notas), [notas]);
     
@@ -37,8 +37,6 @@ function PanelNotas() {
     
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
-                  <div><iframe src="https://dolarhoy.com/i/cotizaciones/dolar-blue" frameborder="0"></iframe></div>
-          
       <div style={{ textAlign: 'center' }}>
         <NotaReducida
           tituloNota=''

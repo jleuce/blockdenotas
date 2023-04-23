@@ -1,1 +1,1 @@
-export const listaColores = ["#F94144","#F8961E","#F9C74F","#90BE6D","#43AA8B",'#FAFAFA','#2E2E2E',"#99AA8B","#A94144"];
+export const listaColores = ["#55efc4","#81ecec","#74b9ff","#a29bfe","#fdcb6e",'#FAFAFA','#2E2E2E',"#d63031","#ffeaa7"];
