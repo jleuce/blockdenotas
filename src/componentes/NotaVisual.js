@@ -55,6 +55,8 @@ function NotaVisual(props) {
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={props.borrarNotaHandler}>{props.textoBoton}</button>
+                    <button onClick={()=>props.cambiarLugarHandler('adelantar')}>Adelantar</button>
+                    <button onClick={()=>props.cambiarLugarHandler('atrasar')}>Atrasar</button>
                 </div>
                     <div className='tituloNota'style={{ backgroundColor: colorFondoNota }}>
                         <p style={{ color: colorTextoInputMemo }}>{props.tituloNota}</p>

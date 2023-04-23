@@ -9,7 +9,7 @@ function PanelNotas() {
   const myContextObject = useContext(MyContext);
   const [notas, setNotas] = useState([
     {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#55efc4',fijada:false,posicion:(1)},
-    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#81ecec',fijada:true,posicion:(2)},
+    {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#81ecec',fijada:false,posicion:(2)},
     {idNota: (3), tituloNota:'Prueba 3',textoNota:'Texto Prueba 3',colorNota:'#74b9ff',fijada:false,posicion:(3)}
                                     ]);
   const notasOrdenadas = useMemo(() => ordenarNotas(notas), [notas]);
@@ -33,6 +33,27 @@ function PanelNotas() {
     console.log('notas trans',notaTransaccional);
     setNotas(notaTransaccional);
     console.log('nota editada', notas);
+  }
+  const cambiarLugar = (tipoCambio,objeto) => {
+    const a = (1);
+    const b = (-1);
+    const funcion = (x) => {
+      if(notas.find(laNota => laNota.posicion === objeto.posicion - x) !== undefined){
+        const arrayTransaccional = notas.filter(objetoBuscado => objetoBuscado.posicion !== objeto.posicion);
+        const objetoTransaccional = arrayTransaccional.find(objetoBuscado => objetoBuscado.posicion === objeto.posicion - (x));
+        const objetoNuevo = {...objeto, posicion:objeto.posicion-(x)}
+        const objetoAnteriorAlNuevo = {...objetoTransaccional,posicion: objetoTransaccional.posicion + (x)}
+        const arraySinCambios = arrayTransaccional.filter(objetoBuscado => objetoBuscado.posicion !== objetoTransaccional.posicion);
+        setNotas([...arraySinCambios,objetoNuevo,objetoAnteriorAlNuevo]);
+      }else{
+        console.log(`no se puede ${x} al posicion actual`);
+      }
+    }
+    if (tipoCambio === 'adelantar'){
+      funcion(a);
+    }else{
+      funcion(b);
+    }
   }
     
   return (
@@ -59,6 +80,7 @@ function PanelNotas() {
                             tipoNota='existente'
                             borrarNotaHandler={()=> borrarNota(nota.idNota)}
                             textoBoton='Eliminar nota'
+                            cambiarLugarHandler = {(tipo) => cambiarLugar(tipo,nota)}
                           ></NotaVisual>)}
     </div>
   )

@@ -47,6 +47,7 @@ function adelantarNotasFijas(arrayNotas) {
 }
 
 function ordenarNumericamenteUnArray(arrayNotas){
+  console.log('arrayNotas',arrayNotas);
   arrayNotas.sort(function (a, b) {
     if (a.posicion > b.posicion) {
       return 1;
