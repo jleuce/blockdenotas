@@ -3,10 +3,12 @@ import NotaReducida from './NotaReducida';
 import NotaVisual from './NotaVisual'
 import { MyContext } from '../context/Contexto';
 import { ordenarNotas } from '../funciones/funciones';
+import NotaNuevaIcono from './NotaNuevaIcono';
 
 function PanelNotas() {
 
   const myContextObject = useContext(MyContext);
+  const [mostrarNotaNueva,setMostrarNotaNueva] = useState(false);
   const [notas, setNotas] = useState([
     {idNota: (1), tituloNota:'Prueba 1',textoNota:'Texto Prueba 1',colorNota:'#55efc4',fijada:false,posicion:(1)},
     {idNota: (2), tituloNota:'Prueba 2',textoNota:'Texto Prueba 2',colorNota:'#81ecec',fijada:false,posicion:(2)},
@@ -55,19 +57,18 @@ function PanelNotas() {
       funcion(b);
     }
   }
-    
+  const abrirNota = () => {
+    setMostrarNotaNueva((prev) => !prev);
+  }
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
-      <div style={{ textAlign: 'center' }}>
-        <NotaReducida
-          tituloNota=''
-          textoNota=''
-          colorNota='#FAFAFA'
-          guardarNotaHandler={(nuevaNota) => agregarNota(nuevaNota)}
-          textoBoton='Agregar Nota'
-          tipo='nueva'
-          cantidadNotas={notasOrdenadas.length}
-          ></NotaReducida>
+      <div>
+        <NotaNuevaIcono 
+          abrirNotaHandler={abrirNota} 
+          agregarNotaHandler={agregarNota}
+          notasOrdenadas={notasOrdenadas}
+          mostrarNotaNueva={mostrarNotaNueva}
+        ></NotaNuevaIcono>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>
       {notasOrdenadas.map( nota => <NotaVisual
