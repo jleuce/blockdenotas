@@ -200,6 +200,17 @@ code {
   cursor: pointer;
 }
 
-
+.grilla{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-gap: 10px;
+  margin:20px;
+  padding: 10px;
+  height: 360px;
+  width: 420px;
+  position: relative;
+  align-items: center;
+  background-color: yellow;
+}
 
 

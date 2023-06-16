@@ -6,7 +6,7 @@ function NotaNuevaIcono(props) {
     if(props.mostrarNotaNueva === false){
         return (
             <div className='nota'>
-                <button onClick={props.abrirNotaHandler}>
+                <button onClick={props.abrirOCerrarNotaHandler}>
                     Añade una nota...
                 </button>
             </div>
@@ -15,6 +15,7 @@ function NotaNuevaIcono(props) {
         return(
         <div style={{ textAlign: 'center' }}>
             <NotaReducida
+                volverAIcono={props.abrirOCerrarNotaHandler}
                 tituloNota=''
                 textoNota=''
                 colorNota='#FAFAFA'

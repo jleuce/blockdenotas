@@ -57,32 +57,35 @@ function PanelNotas() {
       funcion(b);
     }
   }
-  const abrirNota = () => {
+  const abrirOCerrarNota = () => {
     setMostrarNotaNueva((prev) => !prev);
   }
+
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
       <div>
         <NotaNuevaIcono 
-          abrirNotaHandler={abrirNota} 
+          abrirOCerrarNotaHandler={abrirOCerrarNota} 
           agregarNotaHandler={agregarNota}
           notasOrdenadas={notasOrdenadas}
           mostrarNotaNueva={mostrarNotaNueva}
         ></NotaNuevaIcono>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>
-      {notasOrdenadas.map( nota => <NotaVisual
-                            key = {nota.idNota}
-                            idNota ={nota.idNota}
-                            tituloNota={nota.tituloNota} 
-                            textoNota={nota.textoNota}
-                            colorNota={nota.colorNota}
-                            guardarNotaHandler={(notaRecibe)=> editarNota(nota.idNota, notaRecibe)}
-                            tipoNota='existente'
-                            borrarNotaHandler={()=> borrarNota(nota.idNota)}
-                            textoBoton='Eliminar nota'
-                            cambiarLugarHandler = {(tipo) => cambiarLugar(tipo,nota)}
-                          ></NotaVisual>)}
+        <div className='grillas'>
+          {notasOrdenadas.map( nota => <NotaVisual
+                                key = {nota.idNota}
+                                idNota ={nota.idNota}
+                                tituloNota={nota.tituloNota} 
+                                textoNota={nota.textoNota}
+                                colorNota={nota.colorNota}
+                                guardarNotaHandler={(notaRecibe)=> editarNota(nota.idNota, notaRecibe)}
+                                tipoNota='existente'
+                                borrarNotaHandler={()=> borrarNota(nota.idNota)}
+                                textoBoton='Eliminar nota'
+                                cambiarLugarHandler = {(tipo) => cambiarLugar(tipo,nota)}
+                              ></NotaVisual>)}
+      </div>
     </div>
   )
 }
