@@ -213,4 +213,33 @@ code {
   background-color: yellow;
 }
 
+.flexBox{
+  background-color: #ffc200;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.notaFlex {
+  /*background-color: #fff;*/
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 15px;
+  /*width: 300px;*/
+  width:30%;
+  margin: 10px;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  /*display: inline-block;
+  /*opacity: 0.9;*/
+  /*align-items: center;*/
+ /*position: relative;*/
+  
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 

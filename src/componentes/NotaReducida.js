@@ -73,7 +73,7 @@ function NotaReducida(props) {
 
         return (
           <>
-            <div className='nota' style={{ backgroundColor: colorFondoNota }}>
+            <div className='notaFlex' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={props.volverAIcono}>X</button>
                     <button onClick={ejecutarFuncion}>{props.textoBoton}</button>

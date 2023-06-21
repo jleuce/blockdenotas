@@ -64,7 +64,7 @@ function PanelNotas() {
   return (
     <div className='.panelNotas' style={{background:myContextObject.colorFondo}}>
       <div>
-        <NotaNuevaIcono 
+        <NotaNuevaIcono
           abrirOCerrarNotaHandler={abrirOCerrarNota} 
           agregarNotaHandler={agregarNota}
           notasOrdenadas={notasOrdenadas}
@@ -72,7 +72,7 @@ function PanelNotas() {
         ></NotaNuevaIcono>
       </div>
       <div style={{ textAlign: 'center' }}>Tus notas</div>
-        <div className='grillas'>
+        <div className='flexBox'>
           {notasOrdenadas.map( nota => <NotaVisual
                                 key = {nota.idNota}
                                 idNota ={nota.idNota}

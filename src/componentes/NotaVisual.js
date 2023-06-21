@@ -38,7 +38,7 @@ function NotaVisual(props) {
 
         return (
           <>
-            <div>
+            {/*<div>
               <button onClick={openModal}>Abrir modal</button>
               {isOpen && <ModalNota 
                 closeModal={closeModal} 
@@ -51,7 +51,7 @@ function NotaVisual(props) {
                 textoBoton={props.textoBoton}
                 editarNotaHandler={props.guardarNotaHandler}//Alguien en algun momento se va enojar con esto
                />}
-            </div>
+            </div>*/}
             <div className='nota' style={{ backgroundColor: colorFondoNota }}>
                 <div className='barraNota'style={{ backgroundColor: colorFondoNota }}>
                     <button onClick={props.borrarNotaHandler}>{props.textoBoton}</button>

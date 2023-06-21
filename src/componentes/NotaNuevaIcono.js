@@ -5,10 +5,12 @@ function NotaNuevaIcono(props) {
     console.log('notaIcono',props);
     if(props.mostrarNotaNueva === false){
         return (
-            <div className='nota'>
-                <button onClick={props.abrirOCerrarNotaHandler}>
-                    Añade una nota...
-                </button>
+            <div style={{ textAlign: 'center' }}>
+                <div className='nota'>
+                    <button onClick={props.abrirOCerrarNotaHandler}>
+                        Añade una nota...
+                    </button>
+                </div>
             </div>
         )
     }else{
